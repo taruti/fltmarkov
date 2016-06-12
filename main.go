@@ -277,8 +277,8 @@ func Ruw(fn string, ncols int, nrows int, w Worker) error {
 }
 
 func main() {
-	//	Run("/tmp/data", 21601, 10801, Dump)
-	//	Ruw("/tmp/data", 21601, 10801, AsJPEG{"/tmp/out.jpg", true})
-	//Ruw("/tmp/data", 21601, 10801, &LearnMarkov{new(BMarkov), image.Rect(0, 0, 1000, 1000), "/tmp/out.mkov"})
-	Ruw("/tmp/data", 21601, 10801, BuildClassifier{})
+	//	Run("/tmp/data", 21600, 10800, Dump)
+	//	Ruw("/tmp/data", 21600, 10800, AsJPEG{"/tmp/out.jpg", true})
+	//Ruw("/tmp/data", 21600, 10800, &LearnMarkov{new(BMarkov), image.Rect(0, 0, 1000, 1000), "/tmp/out.mkov"})
+	Ruw("/tmp/data", 21600, 10800, BuildClassifier{})
 }
