@@ -28,14 +28,15 @@ func RunI16(filename string, ncols int, nrows int, fun func([]int16, int, int) e
 
 func DumpI16(fs []int16, ncols int, nrows int) error {
 	rbase := 0
-	var dmin, dmax, dnum, dsum, errD, min, max int32
+	var dmin, dmax, dnum, dsum, errD, min, max, ldmin, ldmax int32
 	var dminC, dminR, dmaxC, dmaxR int
 	var maxErr float64
 	var arr [2000]int
 	for row := 0; row < nrows; row++ {
 		prev := int32(fs[rbase+0])
 		for col := 0; col < ncols; col++ {
-			d := int32(fs[rbase+col]) - prev
+			x := int32(fs[rbase+col])
+			d := x - prev
 			if d < dmin {
 				dmin = d
 				dminC = col
@@ -45,6 +46,14 @@ func DumpI16(fs []int16, ncols int, nrows int) error {
 				dmax = d
 				dmaxC = col
 				dmaxR = row
+			}
+			if prev >= 0 && x >= 0 {
+				if d < ldmin {
+					ldmin = d
+				}
+				if d > ldmax {
+					ldmax = d
+				}
 			}
 			dnum++
 			dsum += d
@@ -75,8 +84,8 @@ func DumpI16(fs []int16, ncols int, nrows int) error {
 		rbase += ncols
 	}
 
-	fmt.Println("min", min)
-	fmt.Println("max", max)
+	fmt.Println("min/max", min, max)
+	fmt.Println("ldmin/ldmax", ldmin, ldmax)
 	fmt.Println("dmin", dmin, "at", dminC, dminR)
 	fmt.Println("dmax", dmax, "at", dmaxC, dmaxR)
 	fmt.Println("num", dnum)
