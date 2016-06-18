@@ -28,7 +28,8 @@ func RunI16(filename string, ncols int, nrows int, fun func([]int16, int, int) e
 
 func DumpI16(fs []int16, ncols int, nrows int) error {
 	rbase := 0
-	var dmin, dmax, dnum, dsum, errD, min, max, ldmin, ldmax int32
+	var dmin, dmax, dnum, errD, min, max, ldmin, ldmax int32
+	var dsum int64
 	var dminC, dminR, dmaxC, dmaxR int
 	var maxErr float64
 	var arr [2000]int
@@ -56,7 +57,7 @@ func DumpI16(fs []int16, ncols int, nrows int) error {
 				}
 			}
 			dnum++
-			dsum += d
+			dsum += int64(d)
 
 			/*
 				ev := math.Abs(float64(half.From32(d).To32() - d))
@@ -90,7 +91,7 @@ func DumpI16(fs []int16, ncols int, nrows int) error {
 	fmt.Println("dmax", dmax, "at", dmaxC, dmaxR)
 	fmt.Println("num", dnum)
 	fmt.Println("sum", dsum)
-	fmt.Println("avg", dsum/dnum)
+	fmt.Println("avg", dsum/int64(dnum))
 	fmt.Println("err16", maxErr, "from", errD)
 
 	fmt.Println("\n\nmin")
