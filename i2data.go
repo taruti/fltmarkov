@@ -103,6 +103,8 @@ func DumpI16(fs []int16, ncols int, nrows int) error {
 	for c := dmaxC - 4; c < dmaxC+3; c++ {
 		fmt.Print(fs[(dmaxR*ncols)+c], " ")
 	}
+	fmt.Println()
+
 	/*
 		fmt.Println("\n\narr")
 		for i, v := range arr {
