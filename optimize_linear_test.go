@@ -21,6 +21,13 @@ func BenchmarkOptimizeLinear16(b *testing.B) {
 	}
 }
 
+func BenchmarkOptimizeLinear64(b *testing.B) {
+	var lo OptimizeLinear64
+	for i := 0; i < b.N; i++ {
+		lo.Generate(rfs)
+	}
+}
+
 func BenchmarkOptimizeLinear256(b *testing.B) {
 	var lo OptimizeLinear256
 	for i := 0; i < b.N; i++ {
