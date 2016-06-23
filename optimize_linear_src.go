@@ -56,8 +56,6 @@ outer:
 				nzero++
 			}
 		}
-		_ = pmaxi
-		//		log.Println("nzero", nzero)
 		if nzero < 2 {
 			break
 		}
