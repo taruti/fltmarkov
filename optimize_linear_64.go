@@ -103,7 +103,7 @@ func (r *OptimizeLinear64) linearBin(d float32) (int32, bool) {
 }
 func (r *OptimizeLinear64) Find64(f float64) int {
  x := float32(f)
- for i, v := range *r {
+ for i, v := range r {
   if v >= x {
    return i
   }
