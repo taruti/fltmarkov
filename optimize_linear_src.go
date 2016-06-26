@@ -114,7 +114,7 @@ func (r *NAME) linearBin(d float32) (int32, bool) {
 func (r *NAME) Find64(f float64) int {
 	// Linear search is faster than binary search here...
 	x := float32(f)
-	for i, v := range *r {
+	for i, v := range r {
 		if v >= x {
 			return i
 		}
